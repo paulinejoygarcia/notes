@@ -28,8 +28,10 @@ export class Editor extends React.Component {
   }
 
   handleRemoval() {
-    this.props.call('notes.remove', this.props.note._id);
-    this.props.browserHistory.push('/dashboard');
+    if(confirm('Are you sure you want to delete this note?')) {
+      this.props.call('notes.remove', this.props.note._id);
+      this.props.browserHistory.push('/dashboard');
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
